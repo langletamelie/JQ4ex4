@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Exercice 4</title>
+</head>
+<body>
+  <form>
+      <ul>
+        <li>
+          <label for="lastname">Nom : </label><input type="text" name="lastname" id="lastname" />
+        </li>
+        <li>
+          <label for="firstname">Prénom : </label><input type="text" name="firstname" id="firstname" />
+        </li>
+        <li>
+          <label for="birthday">Date de naissance : </label><input type="text" name="birthday" id="birthday" />
+        </li>
+        <li>
+          <label for="birthPlace">Lieu de naissance : </label><input type="text" name="birthPlace" id="birthPlace" />
+        </li>
+        <li>
+          <label for="job">Emploi : </label><input type="text" name="job" id="job" />
+        </li>
+        <li>
+          <label for="firm">Société : </label><input type="text" name="firm" id="firm" />
+        </li>
+      </ul>
+      <button type="button" name="button" id="button">Générer</button>
+    </form>
+  <script src="jquery-3.2.1.js"></script>
+  <script>
+  //déclaration des regex
+  var regexName = /^[-a-zA-Zàéèêîïçô ']+$/;
+  var regexBirthPlace = /[a-zA-Zàéèêîïçô ']+$/;
+  var regexBirth =  /^(([0-2]{1}[\d]{1})|([3]{1}[0-1]{1}))\/(([0]{1}[\d]{1})|([1]{1}[0-2]{1}))\/([0-9]{4})$/;
+  var regexJob = /^[-a-zA-Zàéèêîïçô ']+$/;
+  var regexFirm = /^[-a-zA-Zàéèêîïçô '&!:@\#\$\.0-9]+$/;
+//déclaration de la fonction
+  $('#button').click(function(){
+  //déclaration des variables
+  var lastname = $('#lastname').val();
+  var firstname = $('#firstname').val();
+  var birthday = $('#birthday').val();
+  var birthPlace = $('#birthPlace').val();
+  var job = $('#job').val();
+  var firm = $('#society').val();
+  if(regexName.test(lastname) && regexName.test(firstname) && regexBirth.test(birthday) && regexBirthPlace.test(birthPlace) && regexJob.test(job) && regexFirm.test(firm)){
+  alert(firstname + ' ' + lastname + ', né le ' + birthday + ' à ' + birthPlace + ', est actuellement ' + job + ' à ' + firm + '.');
+}else {
+  alert('Veuillez entrer des données valables');
+}
+});
+</script>
+</body>
+</html>
